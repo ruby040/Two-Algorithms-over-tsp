@@ -133,30 +133,34 @@ def firefly_algorithm(cities, num_fireflies=20, num_iterations=500, alpha=0.5, s
 # ------------------------------
 
 if __name__ == "__main__":
-    # اسم ملف الداتا سيت اللي بنجرب عليه
-    filename = "data/eil51.tsp" 
-    cities = read_tsp_file(filename)
-
-    print(f"--- Running Firefly Algorithm on {filename} ---")
-    
-    # نبدا نحسب وقت الرن تايم من هنا
-    start_time = time.time()
-    
-    best_tour, best_dist = firefly_algorithm(
-        cities, 
-        num_fireflies=20, 
-        num_iterations=500, 
-        alpha=0.5, 
-        seed=1  # هنا نغير من 1 الى 20 عشان نشوف تأثير السيد على النتايج      
-    )
-    
-    end_time = time.time()
-    runtime = (end_time - start_time)
-
-    # هنا التعديل عشان يطبع  مدينة البداية في الاخير
-    complete_tour = best_tour + [best_tour[0]]
-
-    
-    print(f"Best Distance Found: {best_dist:.2f}")
-    print(f"Execution Runtime: {runtime:.4f} seconds")
-    print(f"Complete Tour (Start and End at same city): {complete_tour}")
+ 
+    # الداتا سيتس اللي بنشغل عليها
+    instances = [
+        ("data/eil51.tsp", "eil51"),
+        ("data/pr264.tsp", "pr264")
+    ]
+ 
+    # نشغل على كل داتا سيت
+    for filename, name in instances:
+        cities = read_tsp_file(filename)
+        print(f"\n{'='*50}")
+        print(f"Running Firefly Algorithm on {name} ({len(cities)} cities)")
+        print(f"{'='*50}")
+ 
+        # نشغل 20 رن مختلفة بسيد مختلف لكل رن
+        for seed in range(1, 21):
+            start_time = time.time()
+ 
+            best_tour, best_dist = firefly_algorithm(
+                cities,
+                num_fireflies=20,
+                num_iterations=100,
+                alpha=0.5,
+                seed=seed  # كل رن بسيد مختلف عشان النتائج تكون مستقلة
+            )
+ 
+            end_time = time.time()
+            runtime = end_time - start_time
+ 
+            # نطبع النتائج لكل رن
+            print(f"Run {seed:02d} | Best Distance: {best_dist:.2f} | Runtime: {runtime:.4f}s")
