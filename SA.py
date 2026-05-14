@@ -51,16 +51,21 @@ def Create_Starting_Path(Number_Of_Cities):
     return path
     
 def Create_Neighbor_Path(current_path):
-
     neighbor_path = current_path.copy()
     number_of_cities = len(current_path)
     random_index = random.randint(1, number_of_cities - 1)
-    reverse_index = random_index + 5
+    reverse_part = []
 
     for i in range(random_index, random_index + 6):
-        if i < number_of_cities and reverse_index < number_of_cities:
-            neighbor_path[i] = current_path[reverse_index]
-        reverse_index -= 1
+        if i < number_of_cities:
+            reverse_part.append(current_path[i])
+    reverse_part = reverse_part[::-1]
+    reverse_counter = 0
+    
+    for i in range(random_index, random_index + len(reverse_part)):
+        neighbor_path[i] = reverse_part[reverse_counter]
+        reverse_counter += 1
+        
     return neighbor_path
     
 def Calculate_Path_Cost(path, matrix):
