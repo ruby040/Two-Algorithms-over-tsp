@@ -133,8 +133,7 @@ def Simulated_Annealing(matrix, alpha, max_iterations):
     
     end_time = time.time()
     execution_time = end_time - start_time 
-    print("Execution Time:")
-    print(execution_time)
+    print(f"Execution Time: {execution_time:.4f}")
     
     
 #------------------------------------------------------
