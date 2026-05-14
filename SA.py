@@ -27,18 +27,12 @@ def Create_Distance_Matrix(Cities):
     matrix = np.zeros((Number_Of_Cities, Number_Of_Cities))
 
     for i in range(Number_Of_Cities):
-
         for j in range(Number_Of_Cities):
-
             if i != j:
-
                 x1, y1 = Cities[i]
                 x2, y2 = Cities[j]
-
                 d = math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
-
                 matrix[i][j] = d
-
     return matrix
     
 Matrix_eil51 = Create_Distance_Matrix(CitiesOf_eil51)
@@ -81,7 +75,7 @@ def Calculate_Path_Cost(path, matrix):
     total_cost += matrix[path[-1]][path[0]]
     return total_cost
     
-temperature = 100
+#temperature = 100
 #alpha =  0.90#float(input("Enter Alpha: "))
 #max_iterations = 25 #int(input("Enter Maximum Iterations: "))
     
@@ -137,15 +131,17 @@ def Simulated_Annealing(matrix, alpha, max_iterations):
     
     
 #------------------------------------------------------
+temperature = 100 #anothe parameter( temperature at line 78)
 alpha = 0.99
-max_iterations = 10000
+max_iterations = 1000
 
-print("--------- eil51 ---------")
-
-Simulated_Annealing( Matrix_eil51, alpha, max_iterations )
-
-print("\n--------- Pr264 ---------")
-
-Simulated_Annealing( Matrix_Pr264, alpha, max_iterations )
-
+for seed in range(1, 21):
+    random.seed(seed)
     
+    print("--------- eil51 ---------")
+    Simulated_Annealing( Matrix_eil51, alpha, max_iterations )
+    
+    print("\n--------- Pr264 ---------")
+    Simulated_Annealing( Matrix_Pr264, alpha, max_iterations )
+
+
