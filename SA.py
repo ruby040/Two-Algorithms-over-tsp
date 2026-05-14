@@ -138,14 +138,15 @@ def Simulated_Annealing(matrix, alpha, max_iterations):
     
 #------------------------------------------------------
 alpha = 0.99
-max_iterations = 10000
+max_iterations = 1000
 
-print("--------- eil51 ---------")
-
-Simulated_Annealing( Matrix_eil51, alpha, max_iterations )
-
-print("\n--------- Pr264 ---------")
-
-Simulated_Annealing( Matrix_Pr264, alpha, max_iterations )
-
+for seed in range(1, 21):
+    random.seed(seed)
     
+    print("--------- eil51 ---------")
+    Simulated_Annealing( Matrix_eil51, alpha, max_iterations )
+    
+    print("\n--------- Pr264 ---------")
+    Simulated_Annealing( Matrix_Pr264, alpha, max_iterations )
+
+
