@@ -75,7 +75,7 @@ def Calculate_Path_Cost(path, matrix):
     total_cost += matrix[path[-1]][path[0]]
     return total_cost
     
-temperature = 100
+#temperature = 100
 #alpha =  0.90#float(input("Enter Alpha: "))
 #max_iterations = 25 #int(input("Enter Maximum Iterations: "))
     
@@ -131,6 +131,7 @@ def Simulated_Annealing(matrix, alpha, max_iterations):
     
     
 #------------------------------------------------------
+temperature = 100 #anothe parameter( temperature at line 78)
 alpha = 0.99
 max_iterations = 1000
 
