@@ -1,6 +1,7 @@
 import math
 import numpy as np
 import random
+import time
 
 CitiesOf_eil51 = [
     (37, 52),(49, 49),(52, 64),(20, 26),(40, 30),
@@ -93,6 +94,7 @@ Current_path = starting_path
     
 def Simulated_Annealing(matrix, alpha, max_iterations):
 
+    start_time = time.time()
     temperature = 100
 
     starting_path = Create_Starting_Path(len(matrix))
@@ -128,6 +130,11 @@ def Simulated_Annealing(matrix, alpha, max_iterations):
 
     print("Best Path Cost:")
     print(Cost_BPF)
+    
+    end_time = time.time()
+    execution_time = end_time - start_time 
+    print("Execution Time:")
+    print(execution_time)
     
     
 #------------------------------------------------------
