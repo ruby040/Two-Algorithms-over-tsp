@@ -27,18 +27,12 @@ def Create_Distance_Matrix(Cities):
     matrix = np.zeros((Number_Of_Cities, Number_Of_Cities))
 
     for i in range(Number_Of_Cities):
-
         for j in range(Number_Of_Cities):
-
             if i != j:
-
                 x1, y1 = Cities[i]
                 x2, y2 = Cities[j]
-
                 d = math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
-
                 matrix[i][j] = d
-
     return matrix
     
 Matrix_eil51 = Create_Distance_Matrix(CitiesOf_eil51)
