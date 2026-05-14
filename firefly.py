@@ -154,7 +154,7 @@ if __name__ == "__main__":
             best_tour, best_dist = firefly_algorithm(
                 cities,
                 num_fireflies=20,
-                num_iterations=100,
+                num_iterations=1000,
                 alpha=0.5,
                 seed=seed  # كل رن بسيد مختلف عشان النتائج تكون مستقلة
             )
